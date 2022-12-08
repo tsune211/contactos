@@ -1,0 +1,19 @@
+GET /contacts-app/ HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es-ES,es;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Cookie: username-localhost-8888="2|1:0|10:1666832570|23:username-localhost-8888|44:YzkzN2ZlZWQ3NTA0NDlhM2FjNmQ3YTQ3OTM1OTZhYjc=|d01a68ea2d936e3670dec27fdc30883d5b6afdb1b65210200eb1ded2a84bdea0"; _xsrf=2|be8299fc|dbd52166a9984fe6964874f35142fe29|1666832570
+Host: localhost
+If-Modified-Since: Thu, 24 Nov 2022 21:38:29 GMT
+If-None-Match: "cc3-5ee3e39db15af"
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 OPR/92.0.0.0
+sec-ch-ua: "Chromium";v="106", "Not.A/Brand";v="24", "Opera GX";v="92"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
