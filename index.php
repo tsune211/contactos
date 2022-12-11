@@ -1,12 +1,12 @@
 <?php
-$contacts = [
-  ["name" => "pepe", "phone_number" => "5614092781"],
-  ["name" => "antonio", "phone_number" => "5614043541"],
-  ["name" => "nate", "phone_number" => "5614059721"],
-]
+
+if(file_exists("contacts.json")) {
+  $contacts = json_decode(file_get_contents("contacts.json"), true);
+} else{
+  $contacts = [];
+}
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -34,7 +34,7 @@ $contacts = [
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand font-weight-bold" href="#">
-        <img class="mr-2" src="../static/img/logo.png" />
+        <img class="mr-2" stc="./static/img/logo.png" />
         ContactsApp
       </a>
       <button
@@ -51,10 +51,10 @@ $contacts = [
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="./index.html">Home</a>
+            <a class="nav-link" href="./index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./add.html">Add Contact</a>
+            <a class="nav-link" href="./add.php">Add Contact</a>
           </li>
         </ul>
       </div>
@@ -65,6 +65,14 @@ $contacts = [
     <div class="container pt-4 p-3">
       <div class="row">
 
+        <?php if (count($contacts) == 0): ?>
+          <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center">
+              <p>No contacts saved yet</p>
+              <a href="add.php">Add One!</a>
+            </div>
+          </div>
+        <?php endif ?>  
         <?php foreach ($contacts as $contact): ?>
           <div class="col-md-4 mb-3">
             <div class="card text-center">
