@@ -1,44 +1,42 @@
 <?php
- if ($_SERVER["REQUEST_METHOD"] == "POST"){
-  $contact = [
-    "name" => $_POST["name"],
-    "phone_number" => $_POST["phone_number"],
-  ];
 
-  if(file_exists("contacts.json")) {
-  $contacts = json_decode(file_get_contents("contacts.json"), true);
-} else{
-  $contacts = [];
-}
+  require "database.php";
 
-  $contacts[] = $contact;
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $phoneNumber = $_POST["phone_number"];
 
-  file_put_contents("contacts.json",  json_encode($contacts));
+    $statement = $conn->prepare("INSERT INTO contacts (name, phone_number) VALUES ('$name', '$phoneNumber')");
+    $statement->execute();
 
-  header("Location: index.php");
- }
+    header("Location: index.php");
+  }
 ?>
 
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!--bootstrap-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.2/darkly/bootstrap.min.css" 
-  integrity="sha512-8RiGzgobZQmqqqJYja5KJzl9RHkThtwqP1wkqvcbbbHNeMXJjTaBOR+6OeuoxHhuDN5h/VlgVEjD7mJu6KNQXA==" 
-  crossorigin="anonymous" referrerpolicy="no-referrer" />
- 
-  <script
-  defer
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 
-  integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
-  </script>
 
-  <!--static content-->
-  <link rel="stylesheet" href="../static/css/index.css">
+  <!-- Bootstrap -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.1.3/darkly/bootstrap.min.css"
+    integrity="sha512-ZdxIsDOtKj2Xmr/av3D/uo1g15yxNFjkhrcfLooZV5fW0TT7aF7Z3wY1LOA16h0VgFLwteg14lWqlYUQK3to/w=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- Static Content -->
+  <link rel="stylesheet" href="./static/css/index.css" />
 
   <title>Contacts App</title>
 </head>
@@ -46,7 +44,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand font-weight-bold" href="#">
-        <img class="mr-2" src="../static/img/logo.png" />
+        <img class="mr-2" src="./static/img/logo.png" />
         ContactsApp
       </a>
       <button
