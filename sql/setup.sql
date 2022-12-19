@@ -14,7 +14,9 @@ CREATE TABLE users (
 CREATE Table contacts(
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255),
-    phone_number INT(10)
+    user_id INT NOT NULL,
+    phone_number VARCHAR(255),
+
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-insert into contacts(name, phone_number) values ("Pepe", "5891486267");
