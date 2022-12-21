@@ -19,4 +19,3 @@ CREATE Table contacts(
 
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
-
